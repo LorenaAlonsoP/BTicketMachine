@@ -46,17 +46,29 @@ public class TicketMachine
     }
 
     /**
+     * Vaciar la máquina de todas las monedas que hay en ella
+     */
+    public int emtyMachine()
+    {
+        int devolverDinero;
+        devolverDinero = total + balance;
+        balance = 0;
+        total = 0;
+        return devolverDinero;
+    }
+
+    /**
      * Receive an amount of money from a customer.
      * Check that the amount is sensible.
      */
     public void insertMoney(int amount)
     {
-        if(amount > 0) {
-            balance = balance + amount;
+        if(amount <= 0) {
+            System.out.println("Use a positive amount rather than: " +
+                amount);
         }
         else {
-            System.out.println("Use a positive amount rather than: " +
-                               amount);
+            balance = balance + amount;
         }
     }
 
@@ -83,8 +95,8 @@ public class TicketMachine
         }
         else {
             System.out.println("You must insert at least: " +
-                               (price - balance) + " more cents.");
-                    
+                (price - balance) + " more cents.");
+
         }
     }
 

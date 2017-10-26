@@ -46,15 +46,23 @@ public class TicketMachine
     }
 
     /**
-     * Vaciar la máquina de todas las monedas que hay en ella
+     * Vacia la maquina en caso de que no haya ninguna operación en curso.
      */
     public int emtyMachine()
     {
-        int devolverDinero;
-        devolverDinero = total + balance;
-        balance = 0;
-        total = 0;
-        return devolverDinero;
+        int status;
+        status = 0;
+        if(balance == 0) {
+            int devolverDinero;
+            devolverDinero = balance + total;
+            total = 0;
+            status = devolverDinero;
+        }
+        else {
+            System.out.println("Operación en curso");
+            status = -1;
+        }
+        return status;
     }
 
     /**
